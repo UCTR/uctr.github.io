@@ -1,20 +1,90 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particle-api-js@8/dist/particle.min.js"></script>
+  </head>
 <center>
   <br>
   <br>
-  <br>
-  <form action = "https://api.particle.io/v1/devices/2c0034000f47363333343437/toggle_zone1?access_token=765a6c59a3c75e4f83ef5f9c94fac9392a19db46" method="POST">
-  <input type="submit" value="Toggle Zone 1">
-</form>
+  <input type="button" value="Liberty Bottom" onclick="submit('toggle_liberty_Bottom')">
+
   <br>
   <br>
-  <form action = "https://api.particle.io/v1/devices/2c0034000f47363333343437/toggle_zone2?access_token=765a6c59a3c75e4f83ef5f9c94fac9392a19db46" method="POST">
-  <input type="submit" value="Toggle Zone 2">
-</form>
-  
+
+  <input type="button" value="Liberty Middle" onclick="submit('toggle_liberty_middle')">
+
+
   <br>
   <br>
-  <form action = "https://api.particle.io/v1/devices/2c0034000f47363333343437/toggle_zone3?access_token=765a6c59a3c75e4f83ef5f9c94fac9392a19db46" method="POST">
-  <input type="submit" value="Toggle Zone 3">
-</form>
+
+  <input type="button" value="Liberty Fire" onclick="submit('toggle_liberty_torch')">
+
+
+  <br>
+  <br>
+
+  <br>
+  <br>
+  <input type="button" value="World Trade Bottom" onclick="submit('toggle_zone1')">
+
+  <br>
+  <br>
+
+  <input type="button" value="World Trade Middle" onclick="submit('toggle_zone1')">
+
+  <br>
+  <br>
+
+  <input type="button" value="World Trade Top" onclick="submit('toggle_zone1')">
+
+  <br>
+  <br>
+
+  <br>
+  <br>
+
+  <input type="button" value="Empire State Bottom" onclick="submit('toggle_zone1')">
+
+  <br>
+  <br>
+
+  <input type="button" value="Empire State Middle" onclick="submit('toggle_zone1')">
+
+  <br>
+  <br>
+
+  <input type="button" value="Empire State Top" onclick="submit('toggle_zone1')">
+
+  <br>
+  <br>
+
 
   </center>
+
+  <script>
+
+
+    var particle = new Particle();
+
+    // Do not do this. Really, it's a horrible idea. There are much better
+    // and safer techniques available.
+    const accessToken = '765a6c59a3c75e4f83ef5f9c94fac9392a19db46';
+    const deviceId = '2c0034000f47363333343437';
+
+    function submit(func_name){
+
+    particle.callFunction({ deviceId, name: func_name, auth: accessToken }).then(
+                function (data) {
+                    console.log("success");
+                },
+                function (err) {
+                    console.log("failed");
+                }
+            );
+    }
+
+    
+
+  </script>
+
+</html>
